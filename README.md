@@ -23,3 +23,4 @@
 ETOPO1 Global Relief Model 是一個全球性的、「cell-registered」的、1弧分的網格，緯度從-90度到90度，經度從-180度到180度。
   + 下載頁面: https://www.ngdc.noaa.gov/mgg/global/
   + 其中可以下載「grid-registered」的版本與「cell-registered」版本。
+  + 按照說明從檔案就可以知道尺寸有差異，「grid-registered」的版本是「寬=21601，高=10801」，「cell-registered」版本是「寬=21600，高=10800」。

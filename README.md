@@ -150,3 +150,6 @@ saveas(gcf,'xyz_DTM_example','png')
   + 下載頁面: https://www.ngdc.noaa.gov/mgg/global/
   + 其中可以下載「grid-registered」的版本與「cell-registered」版本。
   + 按照說明從檔案就可以知道尺寸有差異，「grid-registered」的版本是「寬=21601，高=10801」，「cell-registered」版本是「寬=21600，高=10800」。
+  + 練習:
+    + 下載ETOPO1 Bedrock的grid-registered版本GeoTiff檔案(ETOPO1_Bed_g_geotiff.zip)，其檔案大小為312MB。解壓縮為Tiff檔案(ETOPO1_Bed_g_geotiff.tif)，其檔案大小為445MB。
+  > 透過gdal_translate工具，可將GeoTiff轉為XYZ。圖形化QGIS工具可以用，Raster>Conversion>Translate操作。轉換結果可發現「grid-registered」第一個點是

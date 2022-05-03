@@ -180,10 +180,10 @@ saveas(gcf,'xyz_DTM_example','png')
 	```matlab
 	clear;clc
 	dem_info=imfinfo('ETOPO1_Bed_g_geotiff.tif');
-	disp(dem_info)
 	%--
+	disp(dem_info)
 	% 顯示如下:
-	%  Filename: 'ETOPO1_Bed_g_geotiff.tif'
+	%                      Filename: 'ETOPO1_Bed_g_geotiff.tif'
 	%                   FileModDate: '06-六月-2011 11:59:26'
 	%                      FileSize: 466712272
 	%                        Format: 'tif'
@@ -223,6 +223,41 @@ saveas(gcf,'xyz_DTM_example','png')
 	%              ModelTiepointTag: [6x1 double]
 	%                 GDAL_METADATA: [1x783 char]
 	%                   GDAL_NODATA: '-2147483648 '
+	%--
+	disp(dem_info.ModelPixelScaleTag)
+	% 顯示如下:
+	%     0.0167
+	%     0.0167
+	%          0
+	%--
+	disp(dem_info.ModelTiepointTag)
+	% 顯示如下:
+	%          0
+	%          0
+	%          0
+	%  -180.0083
+	%    90.0083
+	%          0
+	%--
+	disp(dem_info.GDAL_METADATA)
+	% 顯示如下:
+	% <GDALMetadata>
+	%   <Item name="NC_GLOBAL#Conventions">COARDS/CF-1.0</Item>
+	%   <Item name="NC_GLOBAL#title">ETOPO1_Bed_g_gmt4.grd</Item>
+	%   <Item name="NC_GLOBAL#history">grdreformat ETOPO1_Bed_g_gdal.grd ETOPO1_Bed_g_gmt4.grd=ni</Item>
+	%   <Item name="NC_GLOBAL#GMT_version">4.4.0</Item>
+	%   <Item name="NC_GLOBAL#node_offset">0</Item>
+	%   <Item name="z#long_name">z</Item>
+	%   <Item name="z#_FillValue">-2147483648</Item>
+	%   <Item name="z#actual_range">-10898, 8271</Item>
+	%   <Item name="x#long_name">Longitude</Item>
+	%   <Item name="x#actual_range">-180, 180</Item>
+	%   <Item name="x#units">degrees</Item>
+	%   <Item name="y#long_name">Latitude</Item>
+	%   <Item name="y#actual_range">-90, 90</Item>
+	%   <Item name="y#units">degrees</Item>
+	%   <Item name="NETCDF_VARNAME" sample="0">z</Item>
+	% </GDALMetadata>
 	%--
 	dem_data=imread('ETOPO1_Bed_g_geotiff.tif');
 	disp(dem_data(1:5,1:5))

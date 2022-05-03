@@ -391,3 +391,24 @@ saveas(gcf,'xyz_DTM_example','png')
 	%--
 	```
 	> 至此，可以確認前述兩個模式，以及在Tiff格式中儲存的資訊差異。另外，對照XYZ檔案與從GeoTiff取出的二維陣列資料，應該可以寫出正確的轉換程式。從Tiff標籤資訊及二維陣列可知，ETOPO的高程解析度是1[m]，使用16位元整數值(-32768 ~ 32767)儲存。剩餘資訊可以慢慢看，但因為各家格式不同，會記錄的標籤也不同，目前沒有興趣理解各家軟體會輸出怎樣的Tiff，但大原則應該是相同的。
+  + 練習3:
+    + 下載ETOPO1 Bedrock的grid-registered版本GeoTiff檔案(ETOPO1_Bed_g_geotiff.zip)，其檔案大小為312MB。解壓縮為Tiff檔案(ETOPO1_Bed_g_geotiff.tif)，其檔案大小為445MB。
+    + 透過gdal_translate工具，將GeoTiff轉為XYZ。圖形化QGIS工具可以用，Raster>Conversion>Translate操作。檔名自訂，例如「output_g_xyz.xyz」，其檔案大小為9.79GB。
+	 ```
+	 gdal_translate -of XYZ C:/ETOPO1_Bed_g_geotiff/ETOPO1_Bed_g_geotiff.tif C:/ETOPO1_Bed_g_geotiff/output_g_xyz.xyz
+	 ```
+    + 把xyz檔案轉檔為mat檔，避免重複讀檔耗費太多時間。以目前的電腦讀一次xyz(9.79GB)可能要10分鐘。
+	```matlab
+	clear;clc
+	%--
+	% 轉檔(xyz to mat)
+	% 因原本xyz檔案太大，重複讀取太耗時間，故將資料改存為mat檔。
+	%--
+	tic
+	dem_xyz=load('111.xyz');
+	toc
+	tic
+	save('dem_xyz','dem_xyz','-v7.3');
+	toc
+	%--
+	```

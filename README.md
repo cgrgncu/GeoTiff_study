@@ -150,7 +150,7 @@ saveas(gcf,'xyz_DTM_example','png')
   + 下載頁面: https://www.ngdc.noaa.gov/mgg/global/
   + 其中可以下載「grid-registered」的版本與「cell-registered」版本。
   + 按照說明從檔案就可以知道尺寸有差異，「grid-registered」的版本是「寬=21601，高=10801」，「cell-registered」版本是「寬=21600，高=10800」。
-  + 練習:
+  + 練習1:
     + 下載ETOPO1 Bedrock的grid-registered版本GeoTiff檔案(ETOPO1_Bed_g_geotiff.zip)，其檔案大小為312MB。解壓縮為Tiff檔案(ETOPO1_Bed_g_geotiff.tif)，其檔案大小為445MB。
     + 透過gdal_translate工具，將GeoTiff轉為XYZ。圖形化QGIS工具可以用，Raster>Conversion>Translate操作。檔名自訂，例如「output_g_xyz.xyz」，其檔案大小為9.79GB。
 	 ```
@@ -176,4 +176,29 @@ saveas(gcf,'xyz_DTM_example','png')
 	% -179.949999999999989 90 -4228
 	% -179.933333333333337 90 -4228
 	```
-  > 透過gdal_translate工具，可將GeoTiff轉為XYZ。圖形化QGIS工具可以用，Raster>Conversion>Translate操作。轉換結果可發現「grid-registered」第一個點是
+  + 練習2:
+    + 下載ETOPO1 Bedrock的cell-registered版本GeoTiff檔案(ETOPO1_Bed_c_geotiff.zip)，其檔案大小為312MB。解壓縮為Tiff檔案(ETOPO1_Bed_c_geotiff.tif)，其檔案大小為445MB。
+    + 透過gdal_translate工具，將GeoTiff轉為XYZ。圖形化QGIS工具可以用，Raster>Conversion>Translate操作。檔名自訂，例如「output_c_xyz.xyz」，其檔案大小為9.80GB。
+	 ```
+	 gdal_translate -of XYZ C:/ETOPO1_Bed_c_geotiff/ETOPO1_Bed_c_geotiff.tif C:/ETOPO1_Bed_c_geotiff/output_c_xyz.xyz
+	 ```
+    + 讀取前5個點並顯示。
+	```matlab
+	clear;clc;close all
+	%--
+	% 讀檔案並顯示
+	f1=fopen('output_c_xyz.xyz');
+	disp(fgetl(f1))
+	disp(fgetl(f1))
+	disp(fgetl(f1))
+	disp(fgetl(f1))
+	disp(fgetl(f1))
+	fclose(f1);
+	%--
+	% output_g_xyz.xyz前五行是:
+	% -179.991666666666674 89.99166666666666 -4229
+	% -179.974999999999994 89.99166666666666 -4229
+	% -179.958333333333343 89.99166666666666 -4229
+	% -179.941666666666663 89.99166666666666 -4229
+	% -179.925000000000011 89.99166666666666 -4229
+	```

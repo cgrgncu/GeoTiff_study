@@ -397,7 +397,7 @@ saveas(gcf,'xyz_DTM_example','png')
 	 ```
 	 gdal_translate -of XYZ C:/ETOPO1_Bed_g_geotiff/ETOPO1_Bed_g_geotiff.tif C:/ETOPO1_Bed_g_geotiff/output_g_xyz.xyz
 	 ```
-    + 把xyz檔案轉檔為mat檔，避免重複讀檔耗費太多時間。以目前的電腦讀一次xyz(9.79GB)可能要10分鐘。
+    + 把xyz檔案轉檔為mat檔，避免重複讀檔耗費太多時間。以目前的電腦讀一次xyz(9.79GB)可能要20分鐘。
 	```matlab
 	clear;clc
 	%--
@@ -407,8 +407,11 @@ saveas(gcf,'xyz_DTM_example','png')
 	tic
 	dem_xyz=load('111.xyz');
 	toc
+	% <233312401x3 double>
+	% Elapsed time is 1164.683978 seconds.
 	tic
 	save('dem_xyz','dem_xyz','-v7.3');
 	toc
+	% Elapsed time is 52.318456 seconds.
 	%--
 	```

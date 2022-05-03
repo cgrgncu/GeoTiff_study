@@ -176,6 +176,65 @@ saveas(gcf,'xyz_DTM_example','png')
 	% -179.949999999999989 90 -4228
 	% -179.933333333333337 90 -4228
 	```
+    + 讀取GeoTiff檔案並顯示部分資訊。
+	```matlab
+	clear;clc
+	dem_info=imfinfo('ETOPO1_Bed_g_geotiff.tif');
+	disp(dem_info)
+	%--
+	% 顯示如下:
+	%  Filename: 'ETOPO1_Bed_g_geotiff.tif'
+	%                   FileModDate: '06-六月-2011 11:59:26'
+	%                      FileSize: 466712272
+	%                        Format: 'tif'
+	%                 FormatVersion: []
+	%                         Width: 21601
+	%                        Height: 10801
+	%                      BitDepth: 16
+	%                     ColorType: 'grayscale'
+	%               FormatSignature: [73 73 42 0]
+	%                     ByteOrder: 'little-endian'
+	%                NewSubFileType: 0
+	%                 BitsPerSample: 16
+	%                   Compression: 'Uncompressed'
+	%     PhotometricInterpretation: 'BlackIsZero'
+	%                  StripOffsets: [10801x1 double]
+	%               SamplesPerPixel: 1
+	%                  RowsPerStrip: 1
+	%               StripByteCounts: [10801x1 double]
+	%                   XResolution: []
+	%                   YResolution: []
+	%                ResolutionUnit: 'None'
+	%                      Colormap: []
+	%           PlanarConfiguration: 'Chunky'
+	%                     TileWidth: []
+	%                    TileLength: []
+	%                   TileOffsets: []
+	%                TileByteCounts: []
+	%                   Orientation: 1
+	%                     FillOrder: 1
+	%              GrayResponseUnit: 0.0100
+	%                MaxSampleValue: 65535
+	%                MinSampleValue: 0
+	%                  Thresholding: 1
+	%                        Offset: 8
+	%                  SampleFormat: 'Two's complement signed integer'
+	%            ModelPixelScaleTag: [3x1 double]
+	%              ModelTiepointTag: [6x1 double]
+	%                 GDAL_METADATA: [1x783 char]
+	%                   GDAL_NODATA: '-2147483648 '
+	%--
+	dem_data=imread('ETOPO1_Bed_g_geotiff.tif');
+	disp(dem_data(1:5,1:5))
+	%--
+	% 顯示如下:
+	%   -4228  -4228  -4228  -4228  -4228
+	%   -4229  -4229  -4229  -4229  -4229
+	%   -4228  -4227  -4228  -4228  -4228
+	%   -4225  -4225  -4225  -4225  -4225
+	%   -4222  -4223  -4222  -4222  -4222
+	%--
+	```
   + 練習2:
     + 下載ETOPO1 Bedrock的cell-registered版本GeoTiff檔案(ETOPO1_Bed_c_geotiff.zip)，其檔案大小為312MB。解壓縮為Tiff檔案(ETOPO1_Bed_c_geotiff.tif)，其檔案大小為445MB。
     + 透過gdal_translate工具，將GeoTiff轉為XYZ。圖形化QGIS工具可以用，Raster>Conversion>Translate操作。檔名自訂，例如「output_c_xyz.xyz」，其檔案大小為9.80GB。
@@ -201,4 +260,98 @@ saveas(gcf,'xyz_DTM_example','png')
 	% -179.958333333333343 89.99166666666666 -4229
 	% -179.941666666666663 89.99166666666666 -4229
 	% -179.925000000000011 89.99166666666666 -4229
+	```
+    + 讀取GeoTiff檔案並顯示部分資訊。
+	```matlab
+	clear;clc
+	dem_info=imfinfo('ETOPO1_Bed_c_geotiff.tif');
+	%--
+	disp(dem_info)
+	% 顯示如下:
+	%                      Filename: 'ETOPO1_Bed_c_geotiff.tif'
+	%                   FileModDate: '06-六月-2011 11:58:44'
+	%                      FileSize: 466647468
+	%                        Format: 'tif'
+	%                 FormatVersion: []
+	%                         Width: 21600
+	%                        Height: 10800
+	%                      BitDepth: 16
+	%                     ColorType: 'grayscale'
+	%               FormatSignature: [73 73 42 0]
+	%                     ByteOrder: 'little-endian'
+	%                NewSubFileType: 0
+	%                 BitsPerSample: 16
+	%                   Compression: 'Uncompressed'
+	%     PhotometricInterpretation: 'BlackIsZero'
+	%                  StripOffsets: [10800x1 double]
+	%               SamplesPerPixel: 1
+	%                  RowsPerStrip: 1
+	%               StripByteCounts: [10800x1 double]
+	%                   XResolution: []
+	%                   YResolution: []
+	%                ResolutionUnit: 'None'
+	%                      Colormap: []
+	%           PlanarConfiguration: 'Chunky'
+	%                     TileWidth: []
+	%                    TileLength: []
+	%                   TileOffsets: []
+	%                TileByteCounts: []
+	%                   Orientation: 1
+	%                     FillOrder: 1
+	%              GrayResponseUnit: 0.0100
+	%                MaxSampleValue: 65535
+	%                MinSampleValue: 0
+	%                  Thresholding: 1
+	%                        Offset: 8
+	%                  SampleFormat: 'Two's complement signed integer'
+	%            ModelPixelScaleTag: [3x1 double]
+	%              ModelTiepointTag: [6x1 double]
+	%                 GDAL_METADATA: [1x789 char]
+	%                   GDAL_NODATA: '-2147483648 '
+	%--
+	disp(dem_info.ModelPixelScaleTag)
+	% 顯示如下:
+	%     0.0167
+	%     0.0167
+	%          0
+	%--
+	disp(dem_info.ModelTiepointTag)
+	% 顯示如下:
+	%      0
+	%      0
+	%      0
+	%   -180
+	%     90
+	%      0
+	%--
+	disp(dem_info.GDAL_METADATA)
+	% 顯示如下:
+	% <GDALMetadata>
+	%   <Item name="NC_GLOBAL#Conventions">COARDS/CF-1.0</Item>
+	%   <Item name="NC_GLOBAL#title">ETOPO1_Bed_c_gmt4.grd</Item>
+	%   <Item name="NC_GLOBAL#history">grdsample -V ETOPO1_Bed_g_gmt4.grd -GETOPO1_Bed_c_gmt4.grd=ni -T</Item>
+	%   <Item name="NC_GLOBAL#GMT_version">4.4.0</Item>
+	%   <Item name="NC_GLOBAL#node_offset">1</Item>
+	%   <Item name="z#long_name">z</Item>
+	%   <Item name="z#_FillValue">-2147483648</Item>
+	%   <Item name="z#actual_range">-10803, 8333</Item>
+	%   <Item name="x#long_name">Longitude</Item>
+	%   <Item name="x#actual_range">-180, 180</Item>
+	%   <Item name="x#units">degrees</Item>
+	%   <Item name="y#long_name">Latitude</Item>
+	%   <Item name="y#actual_range">-90, 90</Item>
+	%   <Item name="y#units">degrees</Item>
+	%   <Item name="NETCDF_VARNAME" sample="0">z</Item>
+	% </GDALMetadata>
+	%--
+	dem_data=imread('ETOPO1_Bed_c_geotiff.tif');
+	disp(dem_data(1:5,1:5))
+	%--
+	% 顯示如下:
+	%   -4229  -4229  -4229  -4229  -4229
+	%   -4228  -4228  -4229  -4229  -4228
+	%   -4226  -4226  -4227  -4227  -4226
+	%   -4224  -4224  -4223  -4223  -4224
+	%   -4224  -4223  -4223  -4223  -4223
+	%--
 	```

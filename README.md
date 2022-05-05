@@ -465,9 +465,11 @@ saveas(gcf,'xyz_DTM_example','png')
 	X_vector=(0:dem_geotiff_info.Width-1)*dem_geotiff_info.ModelPixelScaleTag(1)+dem_geotiff_info.ModelTiepointTag(4)+(dem_geotiff_info.ModelPixelScaleTag(1)/2);
 	disp('X_vector:')
 	disp(num2str(X_vector(1:5)))
+	% -180     -179.9833     -179.9667       -179.95     -179.9333
 	Y_vector=(0:-1:-(dem_geotiff_info.Height-1))*dem_geotiff_info.ModelPixelScaleTag(2)+dem_geotiff_info.ModelTiepointTag(5)-(dem_geotiff_info.ModelPixelScaleTag(2)/2);
 	disp('Y_vector:')
 	disp(num2str(Y_vector(1:5)))
+	% 90      89.9833      89.9667        89.95      89.9333
 	%--
 	% 讀xyz檔
 	tic
@@ -517,8 +519,6 @@ saveas(gcf,'xyz_DTM_example','png')
 	% -179.96667      89.933333          -4222
 	%    -179.95      89.933333          -4222
 	% -179.93333      89.933333          -4222
-	%--
-	dem_info=imfinfo('ETOPO1_Bed_g_geotiff.tif');
 	%--
 	```
 	> 證實Z的部分存放在像素中，X、Y可利用等間距算出來。

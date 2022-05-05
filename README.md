@@ -418,63 +418,95 @@ saveas(gcf,'xyz_DTM_example','png')
     + 比較xyz與GeoTiff差異。
 	```matlab
 	clear;clc
+	dem_info=imfinfo('ETOPO1_Bed_g_geotiff.tif');
 	%--
-	% 比較xyz與GeoTiff差異
+	disp(dem_info)
+	% 顯示如下:
+	%                      Filename: 'ETOPO1_Bed_g_geotiff.tif'
+	%                   FileModDate: '06-六月-2011 11:59:26'
+	%                      FileSize: 466712272
+	%                        Format: 'tif'
+	%                 FormatVersion: []
+	%                         Width: 21601
+	%                        Height: 10801
+	%                      BitDepth: 16
+	%                     ColorType: 'grayscale'
+	%               FormatSignature: [73 73 42 0]
+	%                     ByteOrder: 'little-endian'
+	%                NewSubFileType: 0
+	%                 BitsPerSample: 16
+	%                   Compression: 'Uncompressed'
+	%     PhotometricInterpretation: 'BlackIsZero'
+	%                  StripOffsets: [10801x1 double]
+	%               SamplesPerPixel: 1
+	%                  RowsPerStrip: 1
+	%               StripByteCounts: [10801x1 double]
+	%                   XResolution: []
+	%                   YResolution: []
+	%                ResolutionUnit: 'None'
+	%                      Colormap: []
+	%           PlanarConfiguration: 'Chunky'
+	%                     TileWidth: []
+	%                    TileLength: []
+	%                   TileOffsets: []
+	%                TileByteCounts: []
+	%                   Orientation: 1
+	%                     FillOrder: 1
+	%              GrayResponseUnit: 0.0100
+	%                MaxSampleValue: 65535
+	%                MinSampleValue: 0
+	%                  Thresholding: 1
+	%                        Offset: 8
+	%                  SampleFormat: 'Two's complement signed integer'
+	%            ModelPixelScaleTag: [3x1 double]
+	%              ModelTiepointTag: [6x1 double]
+	%                 GDAL_METADATA: [1x783 char]
+	%                   GDAL_NODATA: '-2147483648 '
 	%--
-	% 讀GeoTiff檔
-	tic
-	dem_geotiff_data=imread('ETOPO1_Bed_g_geotiff.tif');
-	toc
-	% <10801x21601 int16>
-	% Elapsed time is 3.071906 seconds.
+	disp(dem_info.ModelPixelScaleTag)
+	% 顯示如下:
+	%     0.0167
+	%     0.0167
+	%          0
 	%--
-	% 讀xyz檔
-	tic
-	load('dem_xyz.mat')
-	toc
-	% <233312401x3 double>
-	% Elapsed time is 13.343948 seconds.
+	disp(dem_info.ModelTiepointTag)
+	% 顯示如下:
+	%          0
+	%          0
+	%          0
+	%  -180.0083
+	%    90.0083
+	%          0
 	%--
-	% 比較
-	disp('GeoTiff 2D Array:')
-	disp(dem_geotiff_data(1:5,1:5))
-	% GeoTiff 2D Array:
+	disp(dem_info.GDAL_METADATA)
+	% 顯示如下:
+	% <GDALMetadata>
+	%   <Item name="NC_GLOBAL#Conventions">COARDS/CF-1.0</Item>
+	%   <Item name="NC_GLOBAL#title">ETOPO1_Bed_g_gmt4.grd</Item>
+	%   <Item name="NC_GLOBAL#history">grdreformat ETOPO1_Bed_g_gdal.grd ETOPO1_Bed_g_gmt4.grd=ni</Item>
+	%   <Item name="NC_GLOBAL#GMT_version">4.4.0</Item>
+	%   <Item name="NC_GLOBAL#node_offset">0</Item>
+	%   <Item name="z#long_name">z</Item>
+	%   <Item name="z#_FillValue">-2147483648</Item>
+	%   <Item name="z#actual_range">-10898, 8271</Item>
+	%   <Item name="x#long_name">Longitude</Item>
+	%   <Item name="x#actual_range">-180, 180</Item>
+	%   <Item name="x#units">degrees</Item>
+	%   <Item name="y#long_name">Latitude</Item>
+	%   <Item name="y#actual_range">-90, 90</Item>
+	%   <Item name="y#units">degrees</Item>
+	%   <Item name="NETCDF_VARNAME" sample="0">z</Item>
+	% </GDALMetadata>
+	%--
+	dem_data=imread('ETOPO1_Bed_g_geotiff.tif');
+	disp(dem_data(1:5,1:5))
+	%--
+	% 顯示如下:
 	%   -4228  -4228  -4228  -4228  -4228
 	%   -4229  -4229  -4229  -4229  -4229
 	%   -4228  -4227  -4228  -4228  -4228
 	%   -4225  -4225  -4225  -4225  -4225
 	%   -4222  -4223  -4222  -4222  -4222
-	disp('XYZ Data:')
-	disp(num2str(dem_xyz([1:5],1:3)));
-	disp(num2str(dem_xyz([1:5]+21601,1:3)));
-	disp(num2str(dem_xyz([1:5]+21601*2,1:3)));
-	disp(num2str(dem_xyz([1:5]+21601*3,1:3)));
-	disp(num2str(dem_xyz([1:5]+21601*4,1:3)));
-	% XYZ Data:
-	%       -180             90          -4228
-	% -179.98333             90          -4228
-	% -179.96667             90          -4228
-	%    -179.95             90          -4228
-	% -179.93333             90          -4228
-	%       -180      89.983333          -4229
-	% -179.98333      89.983333          -4229
-	% -179.96667      89.983333          -4229
-	%    -179.95      89.983333          -4229
-	% -179.93333      89.983333          -4229
-	%       -180      89.966667          -4228
-	% -179.98333      89.966667          -4227
-	% -179.96667      89.966667          -4228
-	%    -179.95      89.966667          -4228
-	% -179.93333      89.966667          -4228
-	%       -180          89.95          -4225
-	% -179.98333          89.95          -4225
-	% -179.96667          89.95          -4225
-	%    -179.95          89.95          -4225
-	% -179.93333          89.95          -4225
-	%       -180      89.933333          -4222
-	% -179.98333      89.933333          -4223
-	% -179.96667      89.933333          -4222
-	%    -179.95      89.933333          -4222
-	% -179.93333      89.933333          -4222
+	%--
 	```
 	> 證實Z的部分存放在像素中，X、Y可利用等間距算出來。

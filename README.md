@@ -706,6 +706,7 @@ saveas(gcf,'xyz_DTM_example','png')
   + 臺灣本島及部分離島地區之20公尺網格間距數值地形模型（DTM）資料，每一個網格點記錄該點之平面坐標與高程資料。目的：提供臺灣本島及部分離島地區(各圖號產製年度不一)之三維坐標（N、E、H）資料作為地形起伏展示與概略分析使用。  
   + 圖資釋出時間:2022-09-30  
   + 座標系統:EPSG3826(TWD97121分帶)  
+  + 高程格式: 浮點數
   + 來源: https://www.tgos.tw/TGOS/Web/MetaData/TGOS_Query_MetaData.aspx?key=TW-06-301000000A-612709
   + 下載連結: https://data.moi.gov.tw/MoiOD/System/DownloadFile.aspx?DATA=CDC1FC5F-7805-4355-929F-469E8260C52C
     + 檔案大小: 247 MB (259,006,783 位元組)  

@@ -681,6 +681,7 @@ saveas(gcf,'xyz_DTM_example','png')
   + 來源: https://www.tgos.tw/TGOS/Web/MetaData/TGOS_Query_MetaData.aspx?key=TW-06-301000000A-612640  
   + 下載連結: http://dtm.moi.gov.tw/不分幅_全台及澎湖.zip  
     + 檔案大小: 101 MB (106,162,957 位元組)  
+  + 高程解析度: 1公尺
 + 2018年版本(彙整2016年、2017年計畫成果後發布)  
   + 2018年產製之臺灣（本島除樂山管制區外）20公尺網格間距的數值地形模型（DTM）資料，每一個網格點記錄該點之平面坐標與高程資料  
   + 圖資釋出時間: 2018-07-27  

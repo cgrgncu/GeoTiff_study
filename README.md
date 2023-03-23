@@ -675,6 +675,11 @@ saveas(gcf,'xyz_DTM_example','png')
 ### 內政部DEM
 + REF: https://www.tgos.tw/TGOS/Web/TGOS_Home.aspx
 + 2016年版本
+  + 圖資釋出時間: 2016-08-29
+  + 座標系統: EPSG3826(TWD97121分帶)
+  + 來源: https://www.tgos.tw/TGOS/Web/MetaData/TGOS_Query_MetaData.aspx?key=TW-06-301000000A-612640
+  + 下載連結: http://dtm.moi.gov.tw/不分幅_全台及澎湖.zip  
+    + 檔案大小: 101 MB (106,162,957 位元組)
 + 2018年版本(彙整2016年、2017年計畫成果後發布)
 + 2019年版本
 + 2020年版本

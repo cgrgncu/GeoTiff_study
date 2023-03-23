@@ -693,7 +693,7 @@ saveas(gcf,'xyz_DTM_example','png')
   + 圖資釋出時間: 2019-06-17  
   + 座標系統: EPSG3826(TWD97121分帶)  
   + 來源: https://www.tgos.tw/TGOS/Web/MetaData/TGOS_Query_MetaData.aspx?key=TW-06-301000000A-612704 
-  + 下載連結: http://dtm.moi.gov.tw/tif/taiwan_TIF格式.7z  
+  + 下載連結: https://dtm.moi.gov.tw/tif/taiwan_TIF格式.7z  
     + 檔案大小: 299 MB (314,426,160 位元組)    +  
 + 2020年版本  
   + 圖資釋出時間:2020-11-17  

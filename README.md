@@ -698,7 +698,8 @@ saveas(gcf,'xyz_DTM_example','png')
 + 2020年版本  
   + 圖資釋出時間:2020-11-17  
   + 座標系統:EPSG3826(TWD97121分帶)  
-  + 來源: tgos.tw/tgos/Web/MetaData/TGOS_Query_MetaData.aspx?key=TW-06-301000000A-612706
+  + 來源: https://www.tgos.tw/TGOS/Web/MetaData/TGOS_Query_MetaData.aspx?key=TW-06-301000000A-612706
   + 下載連結: https://dtm.moi.gov.tw/2020dtm20m/台灣本島及4離島(龜山島_綠島_蘭嶼_小琉球).7z
+    + 檔案大小: 176 MB (184,776,118 位元組)  
 + 2021年版本
 + 2022年版本
